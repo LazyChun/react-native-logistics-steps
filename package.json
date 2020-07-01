@@ -1,0 +1,33 @@
+{
+  "name": "react-native-logistics-steps",
+  "version": "0.0.21",
+  "description": "a logistics steps component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LazyChun/react-native-logistics-steps.git"
+  },
+  "keywords": [
+    "react-native",
+    "rn",
+    "logistics",
+    "steps"
+  ],
+  "author": "LazyChun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LazyChun/react-native-logistics-steps/issues"
+  },
+  "homepage": "https://github.com/LazyChun/react-native-logistics-steps#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "react-native": ">=0.56.0",
+    "styled-components": ">=4.3.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
