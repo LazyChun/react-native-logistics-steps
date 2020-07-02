@@ -1,10 +1,30 @@
 import React, { useState } from "react";
-import styled from "styled-components/native";
+import PropTypes from "prop-types";
+import { View } from "react-native";
 
-const StepsBox = styled.View`
-  flex-direction: column;
-  justify-content: space-between;
-`;
+const styles = {
+  wrapper: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  stepWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  progressBar: {
+    width: 1,
+    backgroundColor: "#eae9e9",
+    display: "flex",
+    alignItems: "center",
+  },
+  stepProgressBarWrapper: {
+    width: 20,
+    alignItems: "center",
+  },
+  stepContentWrapper: {
+    flex: 1,
+  },
+};
 
 const Steps = ({
   steps = [],
@@ -15,7 +35,7 @@ const Steps = ({
   stepIndicatorMarginTop = 0,
 }) => {
   return (
-    <StepsBox>
+    <View style={styles.wrapper}>
       {steps.map((step, index) => {
         const isLastOne = index + 1 === steps.length;
         return (
@@ -33,27 +53,9 @@ const Steps = ({
           />
         );
       })}
-    </StepsBox>
+    </View>
   );
 };
-
-const StepBox = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const ProgressBar = styled.View`
-  width: 1px;
-  background-color: #eae9e9;
-  height: ${(props) => props.height}px;
-  margin-top: ${(props) => props.marginTop}px;
-  display: flex;
-  align-items: center;
-`;
-
-const StepIndicatorBox = styled.View`
-  margin-top: ${(props) => props.marginTop}px;
-`;
 
 const StepIndicator = ({
   children,
@@ -62,8 +64,8 @@ const StepIndicator = ({
   setIndicatorHeight,
 }) => {
   return (
-    <StepIndicatorBox
-      marginTop={marginTop}
+    <View
+      style={{ marginTop }}
       onLayout={(event) => {
         if (indicatorHeight === 0) {
           setIndicatorHeight(event.nativeEvent.layout.height);
@@ -71,18 +73,9 @@ const StepIndicator = ({
       }}
     >
       {children}
-    </StepIndicatorBox>
+    </View>
   );
 };
-
-const StepProgressBarBox = styled.View`
-  width: 20px;
-  align-items: center;
-`;
-
-const StepContentBox = styled.View`
-  flex: 1;
-`;
 
 const Step = ({
   step,
@@ -112,15 +105,21 @@ const Step = ({
   console.log("pBarHeight________________________", pBarHeight);
   console.log("indicatorHeight________________________", indicatorHeight);
   return (
-    <StepBox>
-      <StepProgressBarBox
+    <View style={styles.stepWrapper}>
+      <View
+        style={styles.stepProgressBarWrapper}
         onLayout={(event) => {
           if (progressBarHeight === 0) {
             setProgressBarHeight(event.nativeEvent.layout.height);
           }
         }}
       >
-        <ProgressBar height={pBarHeight} marginTop={pBarMarginTop}>
+        <View
+          style={[
+            styles.progressBar,
+            { height: pBarHeight, marginTop: pBarMarginTop },
+          ]}
+        >
           <StepIndicator
             marginTop={isFirstOne ? 0 : stepIndicatorMarginTop}
             indicatorHeight={indicatorHeight}
@@ -128,11 +127,30 @@ const Step = ({
           >
             {index === currentStepIndex ? currentStepIndicator : stepIndicator}
           </StepIndicator>
-        </ProgressBar>
-      </StepProgressBarBox>
-      <StepContentBox>{renderStepContent(step, index)}</StepContentBox>
-    </StepBox>
+        </View>
+      </View>
+      <View style={styles.stepContentWrapper}>
+        {renderStepContent(step, index)}
+      </View>
+    </View>
   );
+};
+
+Steps.propTypes = {
+  steps: PropTypes.array,
+  renderStepContent: PropTypes.func,
+  currentStepIndex: PropTypes.number,
+  currentStepIndicator: PropTypes.element,
+  stepIndicator: PropTypes.element,
+  stepIndicatorMarginTop: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+};
+
+Steps.defaultProps = {
+  steps: [],
+  stepIndicatorMarginTop: 0,
 };
 
 export default Steps;

@@ -1,6 +1,6 @@
 {
   "name": "react-native-logistics-steps",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "a logistics steps component",
   "main": "index.js",
   "scripts": {
@@ -22,10 +22,11 @@
     "url": "https://github.com/LazyChun/react-native-logistics-steps/issues"
   },
   "homepage": "https://github.com/LazyChun/react-native-logistics-steps#readme",
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  },
   "peerDependencies": {
-    "react-native": ">=0.56.0",
-    "styled-components": ">=4.3.2"
+    "react-native": ">=0.56.0"
   },
   "devDependencies": {
     "prettier": "^2.0.5"
