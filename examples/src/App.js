@@ -23,6 +23,12 @@ import PddLogistics from './component/PddLogistics';
 import TaobaoLogistics from './component/TaobaoLogistics';
 import JdLogistics from './component/JdLogistics';
 
+const tabPage = {
+  pdd: <PddLogistics />,
+  taobao: <TaobaoLogistics />,
+  jd: <JdLogistics />,
+};
+
 const App = () => {
   const [page, setPage] = useState('pdd');
   return (
@@ -30,9 +36,7 @@ const App = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
-        {page === 'pdd' && <PddLogistics />}
-        {page === 'taobao' && <TaobaoLogistics />}
-        {page === 'jd' && <JdLogistics />}
+        {tabPage[page]}
       </ScrollView>
       <Tabs
         selected={page}
