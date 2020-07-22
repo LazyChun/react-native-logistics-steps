@@ -8,12 +8,10 @@
 
 import React, {useState} from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
 } from 'react-native';
 
 import Tabs from 'react-native-tabs';

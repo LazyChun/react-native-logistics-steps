@@ -1,17 +1,10 @@
-import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from "react-native";
+import React from 'react';
+import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
 
-import logisticsData from "../mockData/pdd";
+import logisticsData from '../mockData/pdd';
 
-const PddLogistics = ()=>{
-    return <Text>UUKKKKNOPPP</Text>
+const PddLogistics = () => {
+  return <Text>UUKKKKNOPPP</Text>;
 };
 
-export default PddLogistics
+export default PddLogistics;
