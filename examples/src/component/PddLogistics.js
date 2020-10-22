@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
-import Steps from 'react-native-logistics-steps';
+//import Steps from 'react-native-logistics-steps';
+import Steps from './steps/Steps';
 import logisticsData from '../mockData/pdd';
 
 const CurrentStepIndicator = () => {
@@ -26,11 +27,13 @@ const LogisticContent = ({item}) => {
 };
 
 const PddLogistics = () => {
+  console.log(logisticsData.list);
   return (
     <View style={styles.container}>
+      <Text>Hello how are you? are you Ok</Text>
       <Steps
         currentStepIndex={0}
-        items={logisticsData.list}
+        steps={logisticsData.list}
         stepIndicatorMarginTop={2}
         currentStepIndicator={<CurrentStepIndicator />}
         stepIndicator={<StepIndicator />}
